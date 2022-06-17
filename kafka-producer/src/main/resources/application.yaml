@@ -1,2 +1,6 @@
 server:
   port: 8080
+spring:
+  kafka:
+   group: group_id
+   bootstrap-servers: localhost:9092
