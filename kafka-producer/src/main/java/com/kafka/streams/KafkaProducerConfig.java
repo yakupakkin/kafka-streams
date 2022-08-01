@@ -22,14 +22,13 @@ public class KafkaProducerConfig {
 
 	@Bean("kafkaTemplate")
 	public KafkaTemplate<String, String> kafkaTemplate() {
-		KafkaTemplate<String, String> kafkaTemplate = new KafkaTemplate<String, String>(producerFactory());
-		return kafkaTemplate;
+		return new KafkaTemplate<>(producerFactory());
 	}
 
 	public ProducerFactory<String, String> producerFactory() {
 
 		// set the producer properties
-		Map<String, Object> properties = new HashMap<String, Object>();
+		Map<String, Object> properties = new HashMap<>();
 		properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, brokers);
 		properties.put(ProducerConfig.RETRIES_CONFIG, 0);
 		properties.put(ProducerConfig.BATCH_SIZE_CONFIG, 4096);
@@ -38,6 +37,6 @@ public class KafkaProducerConfig {
 		properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 
-		return new DefaultKafkaProducerFactory<String, String>(properties);
+		return new DefaultKafkaProducerFactory<>(properties);
 	}
 }

@@ -1,0 +1,12 @@
+spring:
+ kafka:
+  bootstrap-servers:
+   localhost:9099
+ application:
+   name: kafka-processor  
+#  zipkin:
+#    sender:
+#      type: kafka
+server:
+ port: 8087
+ 

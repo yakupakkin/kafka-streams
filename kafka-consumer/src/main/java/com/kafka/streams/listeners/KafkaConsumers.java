@@ -35,7 +35,7 @@ public class KafkaConsumers {
 		System.out.println("Word counter: " + message);
 	}
 
-	@KafkaListener(topics = { "optional-topic" })
+	@KafkaListener(topics = { "greeting-topic" })
 	public void optionalListener(ConsumerRecord<?, ?> record) {
 
 		Optional<?> messages = Optional.ofNullable(record.value());

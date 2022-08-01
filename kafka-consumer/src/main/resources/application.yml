@@ -1,0 +1,12 @@
+server:
+ port: 8086
+ 
+spring:
+  kafka:
+   group: group_id
+   bootstrap-servers: localhost:9099
+  application:
+   name: kafka-consumer
+#  zipkin:
+#    sender:
+#      type: kafka

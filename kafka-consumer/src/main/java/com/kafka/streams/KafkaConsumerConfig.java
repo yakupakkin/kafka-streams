@@ -34,7 +34,7 @@ public class KafkaConsumerConfig {
 	@Bean
 	public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> kafkaListenerContainerFactory() {
 
-		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<String, String>();
+		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
 		factory.setConsumerFactory(consumerFactory());
 		factory.setConcurrency(4);
 		factory.getContainerProperties().setPollTimeout(4000);
@@ -45,7 +45,7 @@ public class KafkaConsumerConfig {
 
 	public ConsumerFactory<String, String> consumerFactory() {
 
-		Map<String, Object> properties = new HashMap<String, Object>();
+		Map<String, Object> properties = new HashMap<>();
 
 		properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, brokers);
 		properties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
@@ -56,7 +56,7 @@ public class KafkaConsumerConfig {
 		properties.put(ConsumerConfig.GROUP_ID_CONFIG, group);
 		properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
 
-		return new DefaultKafkaConsumerFactory<String, String>(properties);
+		return new DefaultKafkaConsumerFactory<>(properties);
 
 	}
 }

@@ -3,19 +3,20 @@ package com.kafka.streams;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
-@Component
+@Service
 public class KafkaProducer {
 
-	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
 
-	public void send(String topic, String message) {
-		kafkaTemplate.send(new ProducerRecord<String, String>(topic, message));
+	@Autowired
+	public KafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
+		this.kafkaTemplate = kafkaTemplate;
+	}
+
+	public void send(String topic, String key, String message) {
+		kafkaTemplate.send(new ProducerRecord<>(topic, key, message));
 	}
 
 	public void destroy() {

@@ -1,0 +1,11 @@
+server:
+  port: 8085
+spring:
+  kafka:
+   group: group_id
+   bootstrap-servers: localhost:9099
+  application:
+   name: kafka-producer   
+#  zipkin:
+#    sender:
+#      type: kafka
